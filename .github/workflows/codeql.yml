@@ -1,4 +1,4 @@
-name: "SQLi Analysis"
+name: "CodeQL Analysis"
 
 on:
   push:
@@ -34,14 +34,4 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: codeql-results.sarif
-
-      - name: Run custom CodeQL query for SQL Injection detection
-        run: |
-          # Run your custom SQL injection query
-          codeql query run ./.github/workflows/queries/sqli-query.ql --database=codeql-db --format=sarifv2 --output=sql-injection-results.sarif
-
-      - name: Upload custom SQLi results
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: sql-injection-results.sarif
 
